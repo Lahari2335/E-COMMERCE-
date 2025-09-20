@@ -1,0 +1,38 @@
+services:
+  mysqldb:
+    container_name: mysqlsdp-db
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: ecommercedb
+      # MYSQL_USER: klu
+      # MYSQL_PASSWORD: klu
+    ports:
+      - "3304:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql   # volume added here
+
+  backend:
+    container_name: sdpspringboot
+    build:
+      context: ./SDP-SPRINGBOOT
+      dockerfile: ../SDP-FULLSTACK/backend.Dockerfile
+    ports:
+      - "9091:9000"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+
+  frontend:
+    container_name: sdpreact
+    build:
+      context: ./SDP-REACT
+      dockerfile: ../SDP-FULLSTACK/frontend.Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+
+# Declare volumes at the bottom
+volumes:
+  mysql-data:
