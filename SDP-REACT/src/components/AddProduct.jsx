@@ -25,7 +25,7 @@ function AddProduct() {
 
     try {
       const response = await api.post("/ecom/products/add", product);
-      console.log("Product added successfully into cart:", response.data);
+      console.log("Product added successfully into the cart:", response.data);
       setProduct({
         name: "",
         imageUrl: "",
