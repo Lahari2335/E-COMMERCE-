@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, { useState } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaLinkedin, FaGithub, FaFacebook, FaTwitter } from 'react-icons/fa';
 import '../comp_css/Contact.css';
@@ -104,4 +102,3 @@ const Contact = () => {
 };
 
 export default Contact;
->>>>>>> a7004b90d41a640e0833455894ff1decbf6a7fb3
